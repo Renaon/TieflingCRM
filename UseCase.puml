@@ -1,0 +1,38 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+
+:Main Admin: as Admin
+left to right direction
+:Gamer:
+:Dungeon Master: as GM
+
+(Бронирование помещения) as book
+(Информация о комнатах) as rooms
+(Действия с записью) as actions
+(Отменить запись) as cancel
+(Календарь активностей) as calendar
+(Операции с пользователями) as usersOP
+GM --> book
+GM --> rooms
+GM --> cancel
+GM --> calendar
+Admin --> actions
+Admin --> usersOP
+Gamer --> calendar
+Gamer --> rooms
+
+GM <|-- Admin
+
+'
+'note right of Admin : This is an example.
+'
+'note right of (Use)
+'A note can also
+'be on several lines
+'end note
+'
+'note "This note is connected\nto several objects." as N2
+'(Start) .. N2
+'N2 .. (Use)
+@enduml
