@@ -1,0 +1,44 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+entity User{
+    id: long
+    login: String
+    password: String
+}
+
+entity Booking{
+    id: Long
+    user_id: Long
+    room_id: Long
+    date: Date
+}
+
+entity Authority{
+    id: Long
+    authority: String
+}
+
+entity User_role{
+    id: Long
+    user_id: Long
+    role: Long
+}
+
+entity Room{
+    id: Long
+    name: String
+}
+
+entity Price{
+    id: Long
+    time: String
+    price: Double
+}
+
+User_role -- User: id
+User_role -- Authority: id
+
+Booking -- User: user_id
+Booking -- Room: id
+@enduml

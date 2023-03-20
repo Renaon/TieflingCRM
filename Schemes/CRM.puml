@@ -2,23 +2,16 @@
 'https://plantuml.com/class-diagram
 
 class TieflingApplication
-class RoomService{
-    roomReository: RoomRepository
-}
+
 class RoomController{
     roomService: RoomService
 }
-class RoomRepository
-class Calendar
 class Booking
-class UserRepository
 class Room{
     id: Long
     title: String
 }
-class UserService{
-    userRepository: UserRepository
-}
+
 class UserController{
     userService: UserService
     userDTO: UserDTO
@@ -37,17 +30,13 @@ class Authority{
     authority: string
 }
 
-UserService  <... UserController
 UserController <... UserDTO
 User <-- UserDTO
-UserService <... UserRepository
-RoomService  <... RoomController
+
 RoomController <-- Room
-RoomService <... RoomRepository
 
 User *- Authority : have >
 Booking - User : id >
 Booking - Room : id >
-Calendar *-- Booking : date >
 
 @enduml
