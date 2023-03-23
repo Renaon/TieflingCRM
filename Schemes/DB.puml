@@ -19,7 +19,7 @@ entity Authority{
     authority: String
 }
 
-entity User_role{
+entity User_roles{
     id: Long
     user_id: Long
     role: Long
@@ -36,8 +36,8 @@ entity Price{
     price: Double
 }
 
-User_role -- User: id
-User_role -- Authority: id
+User_roles -- User: id
+User_roles -- Authority: id
 
 Booking -- User: user_id
 Booking -- Room: id
