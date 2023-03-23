@@ -1,13 +1,11 @@
 package com.crm.Tiefling.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
-import java.sql.Date;
-
-@Getter
-@Setter
+@Data
+@RequiredArgsConstructor
 @Entity
 @Table(name = "room")
 public class Room {
@@ -19,6 +17,7 @@ public class Room {
     @Column(name = "name")
     private String name;
 
-
-
+    public Room(String name){
+        this.name = name;
+    }
 }

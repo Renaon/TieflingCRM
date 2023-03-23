@@ -11,9 +11,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "users")
-@Getter
-@Setter
-@ToString
+@Data
 @RequiredArgsConstructor
 public class User implements UserDetails {
     @Id
@@ -48,7 +46,7 @@ public class User implements UserDetails {
     }
 
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities(){
+    public Collection<Authority> getAuthorities(){
         return authorities;
     }
 
