@@ -8,8 +8,6 @@ import java.sql.Date;
 @Entity
 @Table(name = "booking")
 @Data
-@NoArgsConstructor
-@RequiredArgsConstructor
 public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
