@@ -1,11 +1,10 @@
 package com.crm.Tiefling.entity;
 
-import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
-import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import jakarta.persistence.*;
 import java.util.Collection;
 import java.util.Objects;
 
