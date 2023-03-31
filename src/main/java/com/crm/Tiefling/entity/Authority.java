@@ -4,12 +4,15 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
 @Table(name = "authorities")
 @Data
+@NoArgsConstructor
 public class Authority implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,5 +25,9 @@ public class Authority implements GrantedAuthority {
     @Override
     public String getAuthority() {
         return authority;
+    }
+
+    public Authority(String authority){
+        this.authority = authority;
     }
 }

@@ -2,6 +2,7 @@ package com.crm.Tiefling.service;
 
 import com.crm.Tiefling.entity.Authority;
 import com.crm.Tiefling.entity.User;
+import com.crm.Tiefling.exceptions.UserExistsException;
 import com.crm.Tiefling.repository.AuthorityRepository;
 import com.crm.Tiefling.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -39,7 +41,29 @@ public class UserSevice implements UserDetailsService {
         return userRepository.findByUsername(username);
     }
 
+    public Authority getAuthorityByName(String name) {
+        return authorityRepository.loadAuthorityByName(name);
+    }
+
+    public List<Authority> getAllAuthorities() {
+        return authorityRepository.findAll();
+    }
+
     private Collection<? extends GrantedAuthority> mapToGrantedAuthorities(Collection<Authority> roles){
         return roles.stream().map(role -> new SimpleGrantedAuthority(role.getAuthority())).collect(Collectors.toList());
+    }
+
+    public void saveUser(User user) throws UserExistsException {
+        if (userRepository.loadUserByUsername(user.getUsername()) == null){
+//            user.setRole_id(roleRepository.getReferenceById(2L));
+            user.setPassword(passwordEncoder.encode(user.getPassword()));;
+            userRepository.save(user);
+        }else {
+            throw new UserExistsException("User exist. Try to change your login");
+        }
+    }
+
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
     }
 }
