@@ -8,4 +8,8 @@ import lombok.RequiredArgsConstructor;
 public class UserExistsException extends RuntimeException{
     private static final long serialVersionUID = 2L;
     private String message;
+
+    public UserExistsException(String msg) {
+        this.message = msg;
+    }
 }

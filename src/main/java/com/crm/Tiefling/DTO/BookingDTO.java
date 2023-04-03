@@ -15,6 +15,13 @@ public class BookingDTO  implements BookObservable {
     private Date date;
     private User user;
     private Room room;
+
+    public BookingDTO(Date date, User user, Room room) {
+        this.date = date;
+        this.user = user;
+        this.room = room;
+    }
+
     @Override
     public void addObserver(Observer o) {
         observers.add(o);
