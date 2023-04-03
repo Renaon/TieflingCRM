@@ -31,6 +31,7 @@ public class SecurityConfig{
                             try {
                                 requests
                                         .requestMatchers("/", "/home").permitAll()
+//                                        .requestMatchers("/initial_filling", "/get_roles", "/create_admin").permitAll()
                                         .requestMatchers("/admin/**", "/add/**").hasAuthority("admin")
                                         .requestMatchers("/user/**").hasAnyAuthority("user", "manager", "admin")
                                         .anyRequest().authenticated()
